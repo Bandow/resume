@@ -1,5 +1,6 @@
 @import"variable";
 @import "compass/typography";
+@import "compass/layout/stretching";
 @import "compass/css3";
 @import "compass/reset";
 .container .page{
@@ -79,32 +80,69 @@
   @extend .personal-information;
   @include display-flex;
   @include flex-direction(wrap);
-  >div{
+  .list{
+    position:relative;
     @include flex(1);
     margin:0 1%;
     @include border-radius(5px);
     border:1px dotted rgba(255,255,255,.5);
     background-color:rgba(255,255,255,.5);
-    time{
-      display:block;
-      font-size:$baseFontSize*1.6;
-      text-align:center;
-      line-height:1.5;
-      font-family:$baseFontFamily;
-      margin-top:5%;
+    cursor:pointer;
+    @include transition(all .7s linear);   
+    @include perspective(200px); 
+    height:nth($baseHeight,2)*30;
+    &:hover{
+      @include transform(translateZ(-25px) rotateX(90deg));
     }
-    time:nth-child(2){
-      font-size:$baseFontSize*1.8;
-      font-weight:bold;
+    >div{
+      position:absolute;
+      top: 0;
+      left: 0;
+      @include transition(all .3s ease-out);
+      @include transform(translateZ(-25px) preserve-3d none);
+      display: block;
+      width:nth($baseWidth,1)*10;
+      height:nth($baseHeight,1)*10;
+      >div{
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: white;
+        pointer-events:none;
+        @include box-sizing(border-box);
+      }
+      .front{
+        @include transform(rotateX(0deg) translateZ(25px));
+        time{
+          display:block;
+          font-size:$baseFontSize*1.6;
+          text-align:center;
+          line-height:1.5;
+          font-family:$baseFontFamily;
+          margin-top:5%;
+        }
+        time:nth-child(2){
+          font-size:$baseFontSize*1.8;
+          font-weight:bold;
+        }
+        p{
+          @extend time;
+        }
+        img{
+          width:90%;
+          margin:5%;
+          @include border-radius(5px);
+        }
+      }
+      .reverse-side{
+        @include transform(rotateX(-180deg) translateZ(25px));
+      }
     }
-    p{
-      @extend time;
-    }
-    img{
-      width:90%;
-      margin:5%;
-      @include border-radius(5px);
-    }
+   
+    
   }
 }
 
