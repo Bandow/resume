@@ -837,24 +837,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 .container #page5 {
-  position: relative;
   background-color: #4ef8ca;
-}
-
-.evaluation {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  width: 50%;
-  height: 50%;
-}
-.evaluation p {
-  font-size: 14px;
-  line-height: 1.5;
-  margin-bottom: 10px;
 }
 
 /*course-fixed*/
