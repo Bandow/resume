@@ -9,71 +9,82 @@
 }
 .container #page1{
 	background-color:nth($pageBackgroundColor,1);
+  position:relative;
 }
 .personal-information{
+  @include stretch;
   list-style-type:none;
   width:nth($baseWidth,1)*8;
-  margin:0 auto;
-  padding:10px 0;
+  height:nth($baseHeight,1)*6;
+  margin:auto;
 }
-.personal-information li{
-   width:nth($baseWidth,1)*4;  
-   font-size:$baseFontSize*1.6;
-   height:$baseFontSize*3.6;
-   line-height:$baseFontSize*3.6;
-   margin:nth($baseWidth,2)*4 0;
-   padding-left:nth($baseWidth,2)*9;
+.personal-information li
+{
+   position:relative;
+   border:2px solid rgba(255,255,255,.8);
+   background-color:none;
+   display:inline-block;
+   padding:10px 30px;
+   margin:10px 30px;
    cursor:pointer;
-   @include border-radius(30px 0 0 30px);
-   span{
+   &:hover{
+    background-color:rgba(255,255,255,.2);
+   }
+   .line-em{
     position:absolute;
-    width:$baseFontSize*7.2;
-    height:$baseFontSize*7.2;
-    display:inline-block;
-    @include border-radius(100%);
-    margin:-18px 0 0 -82px;
-    border:2px solid rgba(255,255,255,.3);
-    line-height:$baseFontSize*7.2;
-    text-align:center;
-    font-weight:bold;
-    color:nth($baseColor,2)*0;
-    background:nth($pageBackgroundColor,1);
+    background:none;
+    @include transition(ease 0.4s);
    }
-   &:nth-child(odd){
-	  background:rgba(255,255,255,.3);
-    float:left;
+   &:hover .line-em{
+      background-color:white;
    }
-   &:nth-child(even){
-	  background:rgba(0,0,0,.3);
-    float:right;
+   .line-top{
+     width:0px;
+     height:2px;
+     left:-110%;
+     top:-2px;
+    }
+    &:hover .line-top{
+     width:100%;
+     left:-2px;
+    }
+   .line-right{
+    width:2px;
+    height:0px;
+    right:-2px;
+    top:-110%;
    }
-   &:nth-child(even) span{
-    border:2px solid rgba(0,0,0,.3);
-   }
-   &:nth-child(odd):hover{
-    @include animation(InfoOdd .5s)
-   }
-   &:nth-child(even):hover{
-    @include animation(InfoEven .5s)
-   }
+  &:hover .line-right{
+    height:100%;
+    top:-2px;
+  }
+ .line-bottom{
+   width:2px;
+   height:0px;
+   left:-2px;
+   bottom:-110%;
+  }
+ &:hover .line-bottom{
+  height:100%;
+  bottom:-2px;
+  }
+ .line-left{
+   width:0px;
+   height:2px;
+   right:-110%;
+   bottom:-2px;
+  }
+  &:hover .line-left
+  {
+    width:100%;
+    right:-2px;
+  }
 }
-@include keyframes(InfoOdd)
-{
-  0%   {margin-left:0;}
-  33%  {margin-left:-5%;}
-  66%  {margin-left:5%;}
-  100% {margin-left:0;}
-}
-@include keyframes(InfoEven)
-{
-  0%   {margin-right:0;}
-  33%  {margin-right:-5%;}
-  66%  {margin-right:5%;}
-  100% {margin-right:0;}
-}
+
 
 .container #page2{
   background-color:nth($pageBackgroundColor,2);
+  position: relative;
 }
 .educational{
   padding-top:15%;
@@ -146,16 +157,84 @@
 .container #page5{
   position:relative;
   background-color:nth($pageBackgroundColor,5);
+  h2{
+    padding-top:50px;
+    text-align:center;
+    font-size:$baseFontSize*4;
+    font-weight:bold;
+    color:#fff;
+    line-height:1.5;
+    font-family:$baseFontFamily;
+  }
 }
 .evaluation{
   @include stretch();
   margin:auto;
-  width:nth($baseWidth,1)*5;
-  height:nth($baseHeight,1)*5;
-  p{
-    font-size:$baseFontSize*1.4;
-    line-height:1.5;
-    margin-bottom:$baseFontSize;
+  width:nth($baseWidth,2)*96;
+  height:nth($baseHeight,1)*6;
+  img{
+     padding:10px 10px 15px; 
+     background:white;
+     border:1px solid #ddd; 
+     box-shadow:2px 2px 3px rgba(50, 50, 50, 0.4);
+     @include transition(all 0.5s ease-in); 
+     position:absolute; 
+     z-index:1;
+     cursor:pointer;
+     &:hover{
+        box-shadow:15px 15px 20px rgba(50, 50, 50, 0.4); 
+        @include transform(rotate(0deg) scale(1.20)); 
+        z-index:2;
+     }
+  }
+  .pic1{
+    left: 400px; 
+    top: 0; 
+    @include transform(rotate(-5deg));
+  }
+  .pic2{
+    top: 0; 
+    left: 600px; 
+    @include transform(rotate(-20deg));  }
+  .pic3{
+    bottom: 0; 
+    right: 0; 
+    @include transform(rotate(5deg));
+  }    
+  .pic4{
+    bottom:0; 
+    left:300px; 
+    @include transform(rotate(-10deg));
+  }
+  .pic5{
+    bottom: 0; 
+    left: 0; 
+    @include transform(rotate(-10deg));
+  }
+  .pic6{
+    top: 0; 
+    left:0; 
+    @include transform(rotate(10deg));
+  }
+  .pic7{
+    top: 0; 
+    left: 850px; 
+    @include transform(rotate(20deg));
+  }
+  .pic8{
+    bottom: -20px; 
+    right: 630px; 
+    @include transform(rotate(5deg));
+  }
+  .pic9{
+    top: 90px; 
+    left: 550px; 
+    @include transform(rotate(15deg));
+  }
+  .pic10{
+    left:180px; 
+    top:20px; 
+    @include transform(rotate(-10deg));
   }
 }
 
